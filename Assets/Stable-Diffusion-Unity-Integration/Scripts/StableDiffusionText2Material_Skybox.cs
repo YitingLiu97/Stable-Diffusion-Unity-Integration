@@ -394,13 +394,19 @@ public class StableDiffusionText2Material_Skybox : StableDiffusionGenerator
             if (material == null)
                 return;
 
-            Shader standardShader = sdc.settings.useUniversalRenderPipeline ? Shader.Find("Universal Render Pipeline/Lit") : Shader.Find("Standard");
+      /*      Shader skyboxShader = sdc.settings.useUniversalRenderPipeline ? Shader.Find("Skybox") : Shader.Find("Panoramic");
+
+            if (!skyboxShader)
+                Debug.LogError("Shader setup wrong: Please check if you're project uses 'Skybox'");
             
-            if(!standardShader)
-                Debug.LogError("Shader setup wrong: Please check if you're project uses 'Standard' or 'Universal Render Pipeline'");
-            
-            material = new Material(standardShader);
-            material.mainTexture = texture;
+            material = new Material(skyboxShader);*/
+
+            RenderSettings.skybox = material;
+
+            material.SetTexture("_MainTex", texture);
+
+            /*material.mainTexture = texture;
+            */
             generatedTexture = texture;
 
             // Generate the normal map
@@ -471,11 +477,11 @@ public class StableDiffusionText2Material_Skybox : StableDiffusionGenerator
 
         // Apply tilling, metallic and smoothness
         material.mainTextureScale = new Vector2(-tilingX, -tilingY);
-        material.SetFloat("_Metallic", metallic);
-        material.SetFloat("_Glossiness", smoothness);
+/*        material.SetFloat("_Metallic", metallic);
+        material.SetFloat("_Glossiness", smoothness);*/
 
         // Apply normal map if required
-        if (generateNormalMap && generatedNormal != null)
+    /*    if (generateNormalMap && generatedNormal != null)
         {
             material.SetTexture("_BumpMap", generatedNormal);
             material.SetFloat("_BumpScale", normalMapStrength);
@@ -486,7 +492,9 @@ public class StableDiffusionText2Material_Skybox : StableDiffusionGenerator
         {
             material.SetTexture("_BumpMap", null);
             material.DisableKeyword("_NORMALMAP");
-        }
+        }*/
+
+
 
     }
 
