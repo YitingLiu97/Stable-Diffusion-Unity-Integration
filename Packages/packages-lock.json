@@ -1,5 +1,15 @@
 {
   "dependencies": {
+    "com.blockadelabs.sdk": {
+      "version": "https://github.com/Blockade-Games/BlockadeLabs-SDK-Unity.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "2.0.0",
+        "com.unity.textmeshpro": "3.0.6"
+      },
+      "hash": "8a0cfb04d02e98c073b1401ab44c13d7dfb620d8"
+    },
     "com.unity.collab-proxy": {
       "version": "1.17.7",
       "depth": 0,
@@ -64,7 +74,7 @@
     },
     "com.unity.nuget.newtonsoft-json": {
       "version": "3.0.2",
-      "depth": 2,
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
